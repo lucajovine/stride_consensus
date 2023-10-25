@@ -87,7 +87,7 @@ def generate_consensus(chain_sequences):
         elif len(aa_set) == 1:
             consensus_sequence.append(next(iter(aa_set)))
         else:
-            consensus_sequence.append('X')  # Placeholder for ambiguous residues
+            consensus_sequence.append('X')
 
     return ''.join(consensus_sequence)
 

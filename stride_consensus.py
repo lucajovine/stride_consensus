@@ -148,7 +148,6 @@ def main():
         else:
             chain_secondary_structure_1char[chain_id] += sec_str_code_1char
 
-    # Remove gap-only columns at the beginning of the sequences
     min_gap_index = min(next((i for i, c in enumerate(seq) if c != "-"), len(seq)) for seq in chain_sequences.values())
     chain_sequences = {k: v[min_gap_index:] for k, v in chain_sequences.items()}
     chain_secondary_structure_1char = {k: v[min_gap_index:] for k, v in chain_secondary_structure_1char.items()}
@@ -164,7 +163,6 @@ def main():
         ' ' * 15 + ''.join(str(i % 10) for i in range(1, last_aa + 1))
     ]
 
-    # Adjust the residue numbering bars to match the trimmed sequences
     residue_bar_lines = [
         " " * 15 + "".join(str((i + min_gap_index + 1) // 100) for i in range(last_aa)),
         " " * 15 + "".join(str(((i + min_gap_index + 1) % 100) // 10) for i in range(last_aa)),
